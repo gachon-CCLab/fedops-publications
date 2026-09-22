@@ -1,4 +1,4 @@
-name: Deploy Blog and News
+name: Redirect legacy Blog and News URLs
 
 on:
   push:
@@ -19,18 +19,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: ruby/setup-ruby@v1
+      - uses: actions/setup-python@v5
         with:
-          ruby-version: '3.2'
-      - name: Install dependencies
-        run: bundle install
+          python-version: '3.12'
       - uses: actions/configure-pages@v5
-        id: pages
-      - name: Build Jekyll site
-        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
-        env:
-          JEKYLL_ENV: production
+      - name: Build static redirects
+        run: python scripts/build_redirects.py
       - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
   deploy:
     needs: build
     runs-on: ubuntu-latest
