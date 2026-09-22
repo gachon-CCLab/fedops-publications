@@ -1,0 +1,16 @@
+---
+layout: default
+---
+<article class="article wrap">
+  <a class="back-link" href="{{ page.section | prepend: '/' | append: '/' | relative_url }}">← All {{ page.section }}</a>
+  <div class="article-header">
+    <span class="category">{{ page.category | escape }}</span>
+    <h1>{{ page.title | escape }}</h1>
+    <p class="article-summary">{{ page.summary | escape }}</p>
+  </div>
+  <div class="prose">{{ content }}</div>
+  <div class="article-footer">
+    <a href="{{ page.section | prepend: '/' | append: '/' | relative_url }}">← All {{ page.section }}</a>
+    <a href="{{ site.docs_url }}">FedOps Docs →</a>
+  </div>
+</article>

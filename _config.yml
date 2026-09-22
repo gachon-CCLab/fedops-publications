@@ -1,0 +1,34 @@
+title: FedOps Blog & News
+description: Research notes and product updates from FedOps.
+url: https://gachon-cclab.github.io
+baseurl: /fedops-publications
+home_url: https://gachon-cclab.github.io/fedops-homepage/
+docs_url: https://gachon-cclab.github.io/fedops-docs-1.3/
+console_url: https://ccl.gachon.ac.kr/fedops
+permalink: pretty
+markdown: kramdown
+collections:
+  blog:
+    output: true
+    permalink: /blog/:name/
+  news:
+    output: true
+    permalink: /news/:name/
+defaults:
+  - scope:
+      path: ""
+      type: blog
+    values:
+      layout: article
+      section: blog
+  - scope:
+      path: ""
+      type: news
+    values:
+      layout: article
+      section: news
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor

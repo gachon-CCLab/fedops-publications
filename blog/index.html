@@ -1,0 +1,30 @@
+---
+layout: default
+title: Blog
+section: blog
+---
+<section class="page-hero">
+  <div class="wrap">
+    <p class="eyebrow">BLOG</p>
+    <h1>Ideas behind the work.</h1>
+    <p>Technical perspectives, research, and practical examples from the FedOps community.</p>
+  </div>
+</section>
+<section class="wrap section" aria-label="Blog articles">
+  {% if site.blog.size > 0 %}
+    {% for post in site.blog reversed %}
+      <a class="post-row" href="{{ post.url | relative_url }}">
+        <span class="eyebrow">{{ post.category | escape }}</span>
+        <span class="post-copy"><strong>{{ post.title | escape }}</strong><span>{{ post.summary | escape }}</span></span>
+        <span class="row-link">Read article →</span>
+      </a>
+    {% endfor %}
+  {% else %}
+    <div class="empty-state">
+      <p class="eyebrow">BLOG</p>
+      <h2>Articles are on the way.</h2>
+      <p>In the meantime, explore the documentation and research behind FedOps.</p>
+      <a class="button" href="{{ site.docs_url }}">Read the documentation →</a>
+    </div>
+  {% endif %}
+</section>
