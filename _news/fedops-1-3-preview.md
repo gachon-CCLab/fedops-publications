@@ -2,6 +2,7 @@
 title: A first look at FedOps 1.3
 summary: Connecting local model development, federated learning, and Agent delivery.
 category: Development
+display_order: 14
 ---
 
 FedOps 1.3 brings local model development, federated participation, and Agent delivery into one connected workflow.

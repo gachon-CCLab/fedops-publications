@@ -7,14 +7,25 @@ section: news
   <div class="wrap">
     <p class="eyebrow">NEWS</p>
     <h1>The next chapter.</h1>
-    <p>Release information, documentation updates, and development progress from FedOps.</p>
+    <p>Research releases, publications, videos, and platform updates from FedOps.</p>
   </div>
 </section>
 <section class="wrap section" aria-label="News updates">
-  {% for post in site.news reversed %}
+  {% assign ordered_posts = site.news | sort: 'display_order' %}
+  {% for post in ordered_posts %}
     <a class="post-row" href="{{ post.url | relative_url }}">
       <span class="eyebrow">{{ post.category | escape }}</span>
-      <span class="post-copy"><strong>{{ post.title | escape }}</strong><span>{{ post.summary | escape }}</span></span>
+      <span class="post-copy">
+        <strong>{{ post.title | escape }}</strong>
+        <span>{{ post.summary | escape }}</span>
+        {% if post.author or post.date %}
+          <span class="post-meta">
+            {% if post.author %}{{ post.author | escape }}{% endif %}
+            {% if post.author and post.date %}<span aria-hidden="true"> · </span>{% endif %}
+            {% if post.date %}<time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%Y년 %-m월 %-d일' }}</time>{% endif %}
+          </span>
+        {% endif %}
+      </span>
       <span class="row-link">Read update →</span>
     </a>
   {% else %}
