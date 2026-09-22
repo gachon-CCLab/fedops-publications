@@ -18,11 +18,10 @@ section: news
       <span class="post-copy">
         <strong>{{ post.title | escape }}</strong>
         <span>{{ post.summary | escape }}</span>
-        {% if post.author or post.date %}
+        {% if post.author or post.original_date or post.show_date %}
           <span class="post-meta">
-            {% if post.author %}{{ post.author | escape }}{% endif %}
-            {% if post.author and post.date %}<span aria-hidden="true"> · </span>{% endif %}
-            {% if post.date %}<time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%Y년 %-m월 %-d일' }}</time>{% endif %}
+            {% if post.author %}{{ post.author | escape }}{% if post.original_date or post.show_date %}<span aria-hidden="true"> · </span>{% endif %}{% endif %}
+            {% if post.original_date or post.show_date %}<time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%Y년 %-m월 %-d일' }}</time>{% endif %}
           </span>
         {% endif %}
       </span>
